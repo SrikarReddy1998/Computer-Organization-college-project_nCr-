@@ -1,0 +1,40 @@
+assume cs:code,ds:data
+data segment
+n1 db 04h
+n2 db 02h
+res dw ?
+data ends
+code segment
+start:mov ax,data
+mov ds,ax
+xor ax,ax
+xor bx,bx
+xor dx,dx
+xor cx,cx
+mov a1,ne
+mov a1,01h
+go1:mu1 c1
+dec c1
+jnz go1
+mov bx,ax
+mov c1,n1
+mov d1,n2
+sub c1,d1
+mov a1,01h
+go2:mu1 c1
+dec c1
+jnz go2
+mu1 bx
+mov bx,ax
+mov c1,n1
+mov a1,01h
+go3:mu1 c1
+dec c1
+jnz go3
+div bx
+mov res,ax
+int 03h
+code ends
+end start
+
+
